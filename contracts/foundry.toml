@@ -1,0 +1,28 @@
+[profile.default]
+src = "src"
+test = "test"
+script = "script"
+out = "out"
+libs = ["lib", "node_modules"]
+solc_version = "0.8.26"                  # same compiler as Uniswap v4-core
+evm_version = "cancun"                   # v4 needs transient storage
+optimizer = true
+optimizer_runs = 10_000                  # tuned in W6 against gas snapshots
+bytecode_hash = "none"                   # stable bytecode, hence stable CREATE2 hook addresses
+auto_detect_remappings = false           # remappings.txt is the single source of truth
+ignored_warnings_from = ["lib", "node_modules"]
+fs_permissions = [{ access = "read", path = "./test/fork/vectors" }]  # fork-test vectors from the analyzer
+
+[fuzz]
+runs = 1_000
+
+[invariant]
+runs = 256
+depth = 64
+fail_on_revert = true
+
+[profile.ci.fuzz]
+runs = 10_000
+
+[profile.ci.invariant]
+runs = 1_000

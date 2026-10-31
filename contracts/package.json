@@ -1,0 +1,8 @@
+{
+  "name": "@prop-amm-publico/contracts",
+  "private": true,
+  "license": "MIT",
+  "dependencies": {
+    "@pythnetwork/pyth-sdk-solidity": "4.3.1"
+  }
+}

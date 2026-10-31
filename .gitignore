@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Analyzer data: downloaded or derived, never committed
+analyzer/data/
+
+# Foundry
+contracts/out/
+contracts/cache/
+contracts/broadcast/
+
+# Node
+node_modules/
+.next/
+dist/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store

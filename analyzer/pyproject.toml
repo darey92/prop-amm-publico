@@ -1,0 +1,44 @@
+[project]
+name = "propamm-analyzer"
+version = "0.1.0"
+description = "Phase 0 analyzer for Prop-AMM Público: passive-LP markouts, LVR and backtests"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = [
+    "httpx>=0.27",
+    "polars>=1.0",
+    "pycryptodome>=3.20",
+]
+
+[project.scripts]
+propamm = "propamm_analyzer.cli:main"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.10",
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/propamm_analyzer"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
